@@ -1,0 +1,116 @@
+
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background-image: url(./assets/home/background-home-desktop.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: #fff;
+}
+
+.primary-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.logo{
+    padding: 2rem;
+}
+
+.mobile-nav-toggle[aria-expanded = true]{
+    background-image: url(./assets/shared/icon-close.svg);
+}
+
+.nav-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: fixed;
+    inset: 1.9rem 0 87vh 50%;
+    
+    padding-inline-start: 2rem;
+    z-index: 1000;
+    background-color: hsl(0, 0%, 0%, 0.2);
+}
+
+@supports (backdrop-filter: blur(1rem)) {
+    .nav-container{
+        background-color: hsl(0 0 100% /0.1);
+        backdrop-filter: blur(1rem);
+    }
+}
+
+.nav-links{
+    padding-inline-end: 1rem;
+    list-style-type: none;
+    font-size: 1rem;
+}
+
+.nav-links > a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav-links > [aria-hidden = true]{
+    padding-right: 0.4rem;
+    font-weight: 900;
+}
+
+/* Tablet Version */
+@media only screen and (max-width: 105em){
+    body{
+        background-image: url(./assets/home/background-home-tablet.jpg);
+    }
+}
+
+/* Mobile Version */
+@media only screen and (max-width: 50em) {
+    
+    body{
+        background-image: url(./assets/home/background-home-mobile.jpg);
+    }
+
+    
+    .nav-container{
+        position: fixed;
+        inset: 0 0 0 30%;
+        gap: 2rem;
+
+        flex-direction: column;
+        background-color: hsl(0, 0%, 0%, 0.2);
+        padding: min(30vh, 10rem) 2rem;
+
+        transform: translateX(100%);
+        transition: transform 350ms ease-out;
+    }
+    
+    .nav-container[data-visible = true]{
+        transform: translateX(0%);
+    }
+
+    .mobile-nav-toggle{
+        position: absolute;
+        z-index: 9999;
+        background: none;
+        background-image: url(./assets/shared/icon-hamburger.svg);
+        background-repeat: no-repeat;
+        width: 2rem;
+        aspect-ratio: 1;
+        top: 2rem;
+        right: 2rem;
+        border: none;
+        outline: none;
+    }
+}
+
+   
